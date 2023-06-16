@@ -4,6 +4,7 @@ import base64, io
 import imgData
 import Deep
 import TextRecognition
+import ObjectRecognition
 from werkzeug.utils import secure_filename
 
 
@@ -22,6 +23,12 @@ def resultFacial():
 @app.route("/reconocimiento_texto")
 def resultTextRecognition():
     resultado = TextRecognition.textRecognition()
+    return jsonify(resultado)
+
+@app.route("/deteccion_objetos")
+def resultObjectRecognition():
+    objeto = "imagenAPI.jpeg"
+    resultado = ObjectRecognition.query(objeto)
     return jsonify(resultado)
 
 @app.route("/imagen")
